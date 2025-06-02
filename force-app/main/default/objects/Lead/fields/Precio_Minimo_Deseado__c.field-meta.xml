@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Precio_Minimo_Deseado__c</fullName>
+    <inlineHelpText>Precio mínimo aceptable para el cliente.</inlineHelpText>
+    <label>Precio Mínimo Deseado</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>2</scale>
+    <trackFeedHistory>false</trackFeedHistory>
+    <type>Currency</type>
+</CustomField>
