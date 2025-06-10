@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Opportunity_One_Association</fullName>
+    <active>true</active>
+    <description>Impide que una oportunidad tenga un Tanque_Asociado__c y un Pedido_Asociado__c al mismo tiempo.</description>
+    <errorConditionFormula>NOT(ISBLANK(Tanque_Asociado__c)) &amp;&amp; NOT(ISBLANK(Pedido_Asociado__c))</errorConditionFormula>
+    <errorMessage>Una Oportunidad no puede tener un Tanque Asociado y un Pedido Asociado al mismo tiempo. Por favor, asegure que solo uno de los campos esté relleno.</errorMessage>
+</ValidationRule>

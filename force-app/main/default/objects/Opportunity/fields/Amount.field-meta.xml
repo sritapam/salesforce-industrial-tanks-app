@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Amount</fullName>
+    <inlineHelpText>Este Monto se inicializa automáticamente con el Precio Base del Tipo de Tanque asociado a la Oportunidad al momento de la conversión del Lead. Puede ser modificado manualmente para reflejar el precio de venta final acordado con el cliente.</inlineHelpText>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+</CustomField>

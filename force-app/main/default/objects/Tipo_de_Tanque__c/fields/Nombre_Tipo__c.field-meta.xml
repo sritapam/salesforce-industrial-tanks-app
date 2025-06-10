@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nombre_Tipo__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Nombre descriptivo del tipo de tanque (ej. &apos;Tanque Estándar 5000L&apos;).</inlineHelpText>
+    <label>Nombre Tipo</label>
+    <length>255</length>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -32,5 +32,87 @@
         <members>*</members>
         <name>StaticResource</name>
     </types>
+
+    <types>
+        <members>*</members>
+        <name>Layout</name>
+    </types>
+
+    <types>
+        <members>Account</members>
+        <members>Contact</members>
+        <members>Lead</members>
+        <members>Opportunity</members>
+        <members>Pedido__c</members>
+        <members>Tanque__c</members>
+        <members>Tipo_de_Tanque__c</members>
+        <name>CustomObject</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>CustomField</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>RecordType</name>
+    </types>
+
+    <types>
+        <members>Admin</members> <members>Vendedor Industrial</members>
+        <members>Mantenimiento de Tanques</members>
+        <name>Profile</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>PermissionSet</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>FlexiPage</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>CustomApplication</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>ValidationRule</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>Flow</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>Workflow</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>AssignmentRules</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>ListView</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>Report</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Dashboard</name>
+    </types>
+
     <version>63.0</version>
 </Package>

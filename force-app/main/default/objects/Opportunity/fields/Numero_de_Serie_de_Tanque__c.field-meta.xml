@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Numero_de_Serie_de_Tanque__c</fullName>
+    <externalId>false</externalId>
+    <formula>BLANKVALUE( Tanque_Asociado__r.Numero_de_Serie__c , &quot;N/A&quot; )</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <inlineHelpText>Número de serie del tanque asociado directamente en el registro de Oportunidad</inlineHelpText>
+    <label>Número de Serie de Tanque</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>
