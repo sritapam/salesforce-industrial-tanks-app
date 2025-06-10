@@ -28,22 +28,24 @@ private class TankMassUploadController_Test {
         // Recuperar los tipos de tanque creados en el testSetup
         Tipo_de_Tanque__c testTipoTanque = [SELECT Id FROM Tipo_de_Tanque__c WHERE Nombre_Tipo__c = 'Tipo Test A' LIMIT 1];
 
+        // Generar un sufijo único para los números de serie
+        String uniqueSuffix = System.currentTimeMillis() + ''; // Utiliza el timestamp actual
+
         // Preparar una lista de datos de tanques simulando el CSV
         List<Object> tankDataList = new List<Object>();
         
         Map<String, Object> tank1Data = new Map<String, Object>();
-        tank1Data.put('Numero_de_Serie__c', 'SN-TEST-001');
-        tank1Data.put('Estado__c', 'Disponible'); // Opcional, el controlador usa 'Disponible' por defecto
+        tank1Data.put('Numero_de_Serie__c', 'SN-TEST-001-' + uniqueSuffix); // Hacerlo único
+        tank1Data.put('Estado__c', 'Disponible');
         tankDataList.add(tank1Data);
 
         Map<String, Object> tank2Data = new Map<String, Object>();
-        tank2Data.put('Numero_de_Serie__c', 'SN-TEST-002');
+        tank2Data.put('Numero_de_Serie__c', 'SN-TEST-002-' + uniqueSuffix); // Hacerlo único
         tank2Data.put('Estado__c', 'Reservado');
         tankDataList.add(tank2Data);
 
         Map<String, Object> tank3Data = new Map<String, Object>();
-        tank3Data.put('Numero_de_Serie__c', 'SN-TEST-003');
-        // No se especifica Estado__c para probar el valor por defecto
+        tank3Data.put('Numero_de_Serie__c', 'SN-TEST-003-' + uniqueSuffix); // Hacerlo único
         tankDataList.add(tank3Data);
 
         Test.startTest();
@@ -62,13 +64,13 @@ private class TankMassUploadController_Test {
         Boolean foundTank2 = false;
         Boolean foundTank3 = false;
         for (Tanque__c t : createdTanks) {
-            if (t.Numero_de_Serie__c == 'SN-TEST-001') {
+            if (t.Numero_de_Serie__c == 'SN-TEST-001-' + uniqueSuffix) {
                 foundTank1 = true;
                 System.assertEquals('Disponible', t.Estado__c, 'Estado del tanque 1 incorrecto.');
-            } else if (t.Numero_de_Serie__c == 'SN-TEST-002') {
+            } else if (t.Numero_de_Serie__c == 'SN-TEST-002-' + uniqueSuffix) {
                 foundTank2 = true;
                 System.assertEquals('Reservado', t.Estado__c, 'Estado del tanque 2 incorrecto.');
-            } else if (t.Numero_de_Serie__c == 'SN-TEST-003') {
+            } else if (t.Numero_de_Serie__c == 'SN-TEST-003-' + uniqueSuffix) {
                 foundTank3 = true;
                 System.assertEquals('Disponible', t.Estado__c, 'Estado del tanque 3 incorrecto (valor por defecto).');
             }
