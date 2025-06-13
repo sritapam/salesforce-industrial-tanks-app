@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage">
+            <property type="String" name="tipoDeTanquePorDefecto" label="ID de Tipo de Tanque por Defecto (opcional)" description="Si se proporciona, el componente se inicializará con este Tipo de Tanque preseleccionado." />
+        </targetConfig>
+        <targetConfig targets="lightning__RecordPage">
+             <objects>
+                 <object>Tipo_de_Tanque__c</object>
+             </objects>
+             <property type="String" name="recordId" label="ID del Registro" description="El ID del Tipo de Tanque cuando se usa en una Record Page." />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

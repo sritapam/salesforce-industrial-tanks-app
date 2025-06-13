@@ -1,0 +1,92 @@
+<template>
+    <lightning-card title="Carga Masiva de Tanques" icon-name="utility:upload">
+        <div class="slds-m-around_medium">
+            <!-- Paso 1: Selección del Tipo de Tanque -->
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">Paso 1: Seleccione el Tipo de Tanque</h2>
+            <lightning-combobox
+                name="tankType"
+                label="Tipo de Tanque"
+                value={selectedTankTypeId}
+                placeholder="Seleccione un Tipo de Tanque"
+                options={tankTypeOptions}
+                onchange={handleTankTypeChange}
+                required>
+            </lightning-combobox>
+
+            <!-- Paso 2: Carga del Archivo CSV -->
+            <h2 class="slds-text-heading_medium slds-m-top_large slds-m-bottom_medium">Paso 2: Cargue el Archivo CSV</h2>
+            <lightning-input
+                type="file"
+                accept=".csv"
+                label="Cargar archivo CSV"
+                onchange={handleFileUpload}
+                class="slds-m-bottom_medium">
+            </lightning-input>
+            <p class="slds-text-color_weak slds-m-bottom_large">
+                Asegúrese de que su CSV contenga las columnas 'Numero_de_Serie__c' y 'Estado__c'.
+            </p>
+
+            <!-- Previsualización de Datos (Tabla) -->
+            <template lwc:if={previewData.length}>
+                <h2 class="slds-text-heading_medium slds-m-top_large slds-m-bottom_medium">Previsualización de Datos CSV</h2>
+                <div style="height: 300px; overflow-y: auto;">
+                    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_striped">
+                        <thead>
+                            <tr class="slds-line-height_reset">
+                                <!-- Mostrar encabezados de forma dinámica -->
+                                <template for:each={csvHeaders} for:item="header">
+                                    <th key={header.key} scope="col">
+                                        <div class="slds-truncate" title={header.label}>{header.label}</div>
+                                    </th>
+                                </template>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Mostrar filas de forma dinámica -->
+                            <!-- AHORA ITERAMOS SOBRE previewData y luego sobre row.cells -->
+                            <template for:each={previewData} for:item="row">
+                                <tr key={row.key}>
+                                    <template for:each={row.cells} for:item="cell">
+                                        <td key={cell.key}>
+                                            <div class="slds-truncate" title={cell.value}>
+                                                {cell.value}
+                                            </div>
+                                        </td>
+                                    </template>
+                                </tr>
+                            </template>
+                        </tbody>
+                    </table>
+                </div>
+            </template>
+
+            <!-- Paso 3: Confirmación y Carga -->
+            <h2 class="slds-text-heading_medium slds-m-top_large slds-m-bottom_medium">Paso 3: Confirmar y Crear Tanques</h2>
+            <lightning-button
+                variant="brand"
+                label="Crear Tanques"
+                onclick={handleUploadTanks}
+                disabled={isUploadDisabled}
+                class="slds-m-right_medium">
+            </lightning-button>
+            <lightning-button
+                variant="neutral"
+                label="Restablecer"
+                onclick={handleReset}
+                class="slds-m-left_medium">
+            </lightning-button>
+
+            <!-- Spinner de Carga -->
+            <template lwc:if={isLoading}>
+                <div class="slds-is-relative slds-align_absolute-center">
+                    <lightning-spinner alternative-text="Cargando..." size="large"></lightning-spinner>
+                </div>
+            </template>
+
+            <!-- Mensajes de Toast -->
+            <template lwc:if={showToast}>
+                <c-custom-toast message={toastMessage} variant={toastVariant} onclose={handleCloseToast}></c-custom-toast>
+            </template>
+        </div>
+    </lightning-card>
+</template>
